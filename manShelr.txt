@@ -1,0 +1,70 @@
+Для записи текстовых консольных скринкастов вы можете воспользоваться утилитой shelr.
+
+Shelr можно взять в PPA для Precise:
+sudo add-apt-repository ppa:antono/shelr
+sudo apt-get update
+sudo apt-get install shelr
+
+Или установить самую новую версию через rubygems:
+sudo apt-get install rubygems
+sudo gem install shelr
+
+Начало записи: shelr record Завершение записи: exit или Ctrl+d Сохранение последней записи: shelr dump last Публикация последней записи: shelr push last
+Скринкасты публикуются на одноименном сервисе с возможностью просмотра через браузер или в другом терминале. Для проигрывания в своем терминале:
+shelr play http://shelr.tv/records/4f427daf96a5690001000003003.json
+Для просмотра в браузере посетите адрес который вернет вам команда shelr push Например вот такой: http://shelr.tv/records/4f427daf96a5690001000003
+
+NAME: shelr - screencasting for shell ninjas
+
+DESCRIPTION:
+       Shelr records terminal output and can replay it.
+       Also you can shere Your records at http://shelr.tv/ or other services.
+
+SYNOPSIS
+       shelr command [id]
+
+COMMANDS
+       record Will record your terminal unless you type exit or Ctrl+D and store it to $HOME/.local/share/shelr/
+              If you want sound recording pass --sound option. You should have sox installed.
+
+       list   lists all your shellcasts.
+       play   plays local or remote shellcast.
+       push   publish your shellcast
+       dump   dump shellcast as json to current directory.
+
+EXAMPLES
+       Record your shellcast:
+           $ shelr record
+           $ # do something ...
+           $ exit
+
+       List recorded shellcasts:
+           $ shelr list
+
+       Play local shellcast:
+
+           $ shelr play 1293702847  # play your own local record
+           $ shelr play record.json # created with shelr dump
+           $ shelr play last        # will play most recent local record
+
+       Play remote shellcast:
+           $ shelr play http://shelr.tv/records/4d1f7c3890820d6144000002.json
+
+       Publish your shellcast:
+           $ shelr push 1293702847
+           $ shelr push last # will push most recent local record
+
+       Setup recording backend:
+           $ shelr backend script
+           $ shelr backend ttyrec
+
+BUGS
+       Windows heh.
+
+COPYRIGHT
+       (C) 2010, 2011, 2012 Antono Vasiljev self@antono.info
+       Licensed under GPLv3+
+
+SEE ALSO
+       script, scriptreplay, ttyrec, ttyplay
+                                                                              June 2012   SHELR
